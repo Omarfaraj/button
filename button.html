@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Color Changing Button</title>
+<link rel="stylesheet" href="button.css">
+</head>
+<body>
+  <button id="colorButton">Change Colors</button>
+  <script>
+    const colorButton = document.getElementById("colorButton");
+
+let colorTimer; // Declare a variable to store the timer
+
+// Automatic color change function
+function changeColors() {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  document.body.style.backgroundColor = "#" + randomColor;
+}
+
+colorButton.addEventListener("click", function() {
+  if (!colorTimer) { // If timer is not running
+    colorTimer = setInterval(changeColors, 1000); // Change colors every second
+    colorButton.textContent = "Stop Color Changes";
+  } else { // If timer is running
+    clearInterval(colorTimer); // Stop the timer
+    colorTimer = null; // Reset the timer variable
+    colorButton.textContent = "Change Colors";
+  }
+});
+
+  </script>
+</body>
+</html>
